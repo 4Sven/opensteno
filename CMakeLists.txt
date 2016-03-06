@@ -2,14 +2,18 @@ cmake_minimum_required(VERSION 3.4)
 set(EXE_NAME opensteno)
 project(${EXE_NAME})
 
-#add link_directories because w/o I can't build project on my mac
-link_directories(/usr/local/lib)
+#add Xcode specific settings
+if(CMAKE_GENERATOR STREQUAL Xcode)
+    #add link_directories because w/o I can't build project on my mac
+    link_directories(/usr/local/lib)
+    #set testability setting for Xcode
+    set(CMAKE_XCODE_ATTRIBUTE_ENABLE_TESTABILITY[variant=Debug] "YES")
+endif()
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Build type")
 endif()
 
-set(CMAKE_XCODE_ATTRIBUTE_ENABLE_TESTABILITY[variant=Debug] "YES")
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
