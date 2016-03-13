@@ -10,6 +10,7 @@
 #define definitions_hpp
 
 #include <stdio.h>
+#include <map>
 #include "SDL.h"
 
 /** @enum mapper::telegram
@@ -50,5 +51,10 @@ enum telegram {
     KEY23 = SDL_SCANCODE_N,
     KEY24 = SDL_SCANCODE_M
 };
+
+std::map<telegram, char> create_map_de();
+std::map<telegram, char> create_map_en();
+
+const std::map<telegram, char> translate_german = create_map_de();
 
 #endif /* definitions_hpp */

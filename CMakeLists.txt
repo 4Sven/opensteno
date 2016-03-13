@@ -22,6 +22,8 @@ source/main.cpp
 source/Steno.cpp
 source/definitions.hpp
 source/definitions.cpp
+source/gui.hpp
+source/gui.cpp
 )
 
 
@@ -42,7 +44,9 @@ pkg_search_module(SDL2 REQUIRED sdl2)
 include_directories(${SDL2_INCLUDE_DIRS})
 set(OPENSTENO_LIBRARIES ${SDL2_LIBRARIES})
 
-#list(APPEND OPENSTENO_LIBRARIES )
+find_package(GTK2 REQUIRED gtk)
+include_directories(${GTK2_INCLUDE_DIRS})
+list(APPEND OPENSTENO_LIBRARIES ${GTK2_LIBRARIES})
 
 
 if (UnitTestPlusPlus_FOUND)

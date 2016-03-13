@@ -1,10 +1,20 @@
+/**
+ *  @file Steno.cpp
+ *
+ *  @brief Old Sample Application for German Stenomachine
+ */
+
 #include "SDL.h"
 #include <iostream>
+#include "gui.hpp"
 
 char text [26];
 
-int main(int argc, char *argv[])
+int maint(int argc, char *argv[])
 {
+ 
+    return startGUI(argc, argv);
+    
     for (int i=0; i < 25; i++) {
         text[i]=' ';
     }
