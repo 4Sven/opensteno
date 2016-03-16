@@ -12,9 +12,6 @@ char text [26];
 
 int maint(int argc, char *argv[])
 {
- 
-    return startGUI(argc, argv);
-    
     for (int i=0; i < 25; i++) {
         text[i]=' ';
     }

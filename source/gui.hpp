@@ -9,9 +9,13 @@
 #ifndef gui_hpp
 #define gui_hpp
 
-#include <stdio.h>
-#include <gtk/gtk.h>
+#pragma once
+#include <QMainWindow>
 
-int startGUI(int argc, char *argv[]);
+class gui : public QMainWindow {
+    Q_OBJECT
+public:
+    gui(void);
+};
 
 #endif /* gui_hpp */

@@ -2,6 +2,30 @@ cmake_minimum_required(VERSION 3.5)
 set(EXE_NAME opensteno)
 project(${EXE_NAME})
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
+
+cmake_policy(SET CMP0004 OLD)
+
+set(HEADERS
+source/gui.hpp
+)
+
+set(SOURCES
+source/main.cpp
+source/Steno.cpp
+source/definitions.hpp
+source/definitions.cpp
+source/gui.cpp
+source/gui.hpp
+)
+
+set(SOURCE
+source/main.cpp
+)
+
+
 #add Xcode specific settings
 if(CMAKE_GENERATOR STREQUAL Xcode)
     #add link_directories because w/o I can't build project on my mac
@@ -17,16 +41,6 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-add_executable(${PROJECT_NAME}
-source/main.cpp
-source/Steno.cpp
-source/definitions.hpp
-source/definitions.cpp
-source/gui.hpp
-source/gui.cpp
-)
-
-
 # add a target to generate API documentation with Doxygen
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
@@ -40,19 +54,32 @@ endif(DOXYGEN_FOUND)
 
 find_package(PkgConfig REQUIRED)
 
-pkg_search_module(SDL2 REQUIRED sdl2)
+#pkg_search_module(SDL2 REQUIRED sdl2)
+find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 set(OPENSTENO_LIBRARIES ${SDL2_LIBRARIES})
 
-find_package(GTK2 REQUIRED gtk)
-include_directories(${GTK2_INCLUDE_DIRS})
-list(APPEND OPENSTENO_LIBRARIES ${GTK2_LIBRARIES})
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
+add_definitions(${QT_DEFINITIONS})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDE_DIR})
+list(APPEND OPENSTENO_LIBRARIES ${QT_LIBRARIES})
+qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
 
+
+#pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+#include_directories(${GTK3_INCLUDE_DIRS})
+#list(APPEND OPENSTENO_LIBRARIES ${GTK3_LIBRARIES})
 
 if (UnitTestPlusPlus_FOUND)
     enable_testing()
     add_subdirectory(tests)
 endif ()
+
+add_executable(${PROJECT_NAME}
+${HEADERS_MOC}
+${SOURCE}
+)
 
 if (CMAKE_VERSION VERSION_GREATER 2.8.5)
     include(FeatureSummary)
@@ -60,3 +87,5 @@ if (CMAKE_VERSION VERSION_GREATER 2.8.5)
 endif ()
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OPENSTENO_LIBRARIES})
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/build)
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}${BUILD_POSTFIX})

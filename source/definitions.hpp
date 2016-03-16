@@ -9,7 +9,6 @@
 #ifndef definitions_hpp
 #define definitions_hpp
 
-#include <stdio.h>
 #include <map>
 #include "SDL.h"
 
