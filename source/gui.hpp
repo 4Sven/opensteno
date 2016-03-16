@@ -9,13 +9,13 @@
 #ifndef gui_hpp
 #define gui_hpp
 
-#pragma once
-#include <QMainWindow>
+#include "ui_opensteno.h"
 
-class gui : public QMainWindow {
+class OpenSteno : public QMainWindow, public Ui::OpenStenoMainWindow {
     Q_OBJECT
 public:
-    gui(void);
+    OpenSteno (QMainWindow *parent = 0);
+    ~OpenSteno();
 };
 
 #endif /* gui_hpp */

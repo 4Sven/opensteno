@@ -14,17 +14,11 @@ source/gui.hpp
 
 set(SOURCES
 source/main.cpp
-source/Steno.cpp
-source/definitions.hpp
-source/definitions.cpp
-source/gui.cpp
-source/gui.hpp
+#source/Steno.cpp
+#source/definitions.hpp
+#source/definitions.cpp
+#source/gui.cpp
 )
-
-set(SOURCE
-source/main.cpp
-)
-
 
 #add Xcode specific settings
 if(CMAKE_GENERATOR STREQUAL Xcode)
@@ -65,7 +59,7 @@ add_definitions(${QT_DEFINITIONS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDE_DIR})
 list(APPEND OPENSTENO_LIBRARIES ${QT_LIBRARIES})
 qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
-
+qt4_wrap_ui(GUI_UI_H source/opensteno.ui)
 
 #pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 #include_directories(${GTK3_INCLUDE_DIRS})
@@ -78,7 +72,8 @@ endif ()
 
 add_executable(${PROJECT_NAME}
 ${HEADERS_MOC}
-${SOURCE}
+${SOURCES}
+${GUI_UI_H}
 )
 
 if (CMAKE_VERSION VERSION_GREATER 2.8.5)

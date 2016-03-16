@@ -12,9 +12,10 @@
  */
 
 #include "gui.hpp"
-#include <QLabel>
 
-gui::gui(void) {
-    QLabel* label = new QLabel("Success!");
-    setCentralWidget(label);
+OpenSteno::OpenSteno(QMainWindow *parent) : QMainWindow(parent) {
+    setupUi(this);
+}
+
+OpenSteno::~OpenSteno() {
 }
