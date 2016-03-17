@@ -9,8 +9,6 @@
  * @mainpage OpenSteno Software
  *
  * \author Sven Jerat
- * \bug I'm using brew on my Mac and always I upgrade/update brew I have to 
-    run <b><tt> brew link gettext --force</tt></b>
  * 
  */
 
@@ -27,7 +25,7 @@
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
-    OpenSteno window;
+    gui window;
     window.show();
     return app.exec();
 }

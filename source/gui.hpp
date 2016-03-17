@@ -11,11 +11,12 @@
 
 #include "ui_opensteno.h"
 
-class OpenSteno : public QMainWindow, public Ui::OpenStenoMainWindow {
+class gui : public QMainWindow, public Ui::OpenStenoMainWindow {
     Q_OBJECT
+    
 public:
-    OpenSteno (QMainWindow *parent = 0);
-    ~OpenSteno();
+    gui (QMainWindow *parent = 0);
+    ~gui();
 };
 
 #endif /* gui_hpp */

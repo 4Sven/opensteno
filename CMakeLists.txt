@@ -4,20 +4,21 @@ project(${EXE_NAME})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
-set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
 
 cmake_policy(SET CMP0004 OLD)
 
 set(HEADERS
 source/gui.hpp
+#source/definitions.hpp
 )
 
 set(SOURCES
 source/main.cpp
+source/gui.hpp
+source/gui.cpp
 #source/Steno.cpp
-#source/definitions.hpp
 #source/definitions.cpp
-#source/gui.cpp
 )
 
 #add Xcode specific settings
@@ -56,14 +57,11 @@ set(OPENSTENO_LIBRARIES ${SDL2_LIBRARIES})
 find_package(Qt4 REQUIRED)
 include(${QT_USE_FILE})
 add_definitions(${QT_DEFINITIONS})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${QT_INCLUDE_DIR})
 list(APPEND OPENSTENO_LIBRARIES ${QT_LIBRARIES})
-qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
+#qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
 qt4_wrap_ui(GUI_UI_H source/opensteno.ui)
-
-#pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
-#include_directories(${GTK3_INCLUDE_DIRS})
-#list(APPEND OPENSTENO_LIBRARIES ${GTK3_LIBRARIES})
 
 if (UnitTestPlusPlus_FOUND)
     enable_testing()

@@ -13,9 +13,9 @@
 
 #include "gui.hpp"
 
-OpenSteno::OpenSteno(QMainWindow *parent) : QMainWindow(parent) {
+gui::gui(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
 }
 
-OpenSteno::~OpenSteno() {
+gui::~gui() {
 }
