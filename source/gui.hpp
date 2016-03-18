@@ -10,6 +10,7 @@
 #define gui_hpp
 
 #include "ui_opensteno.h"
+#include "StenoInput.hpp"
 
 class gui : public QMainWindow, public Ui::OpenStenoMainWindow {
     Q_OBJECT

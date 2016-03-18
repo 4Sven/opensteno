@@ -10,7 +10,6 @@ cmake_policy(SET CMP0004 OLD)
 
 set(HEADERS
 source/gui.hpp
-#source/definitions.hpp
 )
 
 set(SOURCES
@@ -18,7 +17,10 @@ source/main.cpp
 source/gui.hpp
 source/gui.cpp
 #source/Steno.cpp
-#source/definitions.cpp
+source/definitions.hpp
+source/definitions.cpp
+source/StenoInput.hpp
+source/StenoInput.cpp
 )
 
 #add Xcode specific settings

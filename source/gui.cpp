@@ -15,6 +15,8 @@
 
 gui::gui(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
+    //stenoInput->setText("Hello World!");
+    setStatusTip("Anwendung wurde gestartet!");
 }
 
 gui::~gui() {
