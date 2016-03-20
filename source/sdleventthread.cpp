@@ -25,7 +25,7 @@ void SdlEventThread::run() {
             case SDL_KEYDOWN:
             case SDL_KEYUP:
                 std::cout << "SDL KEY UP/DOWN Events registered" << std::endl;
-                //emit keyPressEvent(event);
+                emit keyPressEvent(event.key);
                 break;
                 
             default:

@@ -37,9 +37,9 @@ void gui::closeEvent(QCloseEvent *event) {
 }
 
 void gui::keyboardKeyPressed(SDL_KeyboardEvent event) {
-    
+    std::cout << "keyboardPressed" << std::endl;
 }
 
 void gui::keyPressed(SDL_KeyboardEvent event) {
-    
+    std::cout << "keyPressed" << std::endl;
 }
