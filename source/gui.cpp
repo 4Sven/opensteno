@@ -12,12 +12,34 @@
  */
 
 #include "gui.hpp"
+#include <iostream>
+#include <QCloseEvent>
 
-gui::gui(QMainWindow *parent) : QMainWindow(parent) {
+gui::gui(QMainWindow *parent) :
+    QMainWindow(parent),
+    eventThread(new SdlEventThread(this))
+{
     setupUi(this);
-    //stenoInput->setText("Hello World!");
     setStatusTip("Anwendung wurde gestartet!");
+    
+    connect(eventThread, SIGNAL(keyPressEvent(SDL_KeyboardEvent)), this, SLOT(keyPressed(SDL_KeyboardEvent)));
+    
+    eventThread->start();
 }
 
 gui::~gui() {
+}
+
+void gui::closeEvent(QCloseEvent *event) {
+    eventThread->stop();
+    eventThread->terminate();
+    event->accept();
+}
+
+void gui::keyboardKeyPressed(SDL_KeyboardEvent event) {
+    
+}
+
+void gui::keyPressed(SDL_KeyboardEvent event) {
+    
 }

@@ -10,50 +10,50 @@
 #define definitions_hpp
 
 #include <map>
-#include "SDL.h"
+#include <QApplication>
 
 /** @enum mapper::telegram
-*   @brief This enum is helping to assign SDL_SCANCODES to steno keyboard keys.
+*   @brief This enum is helping to assign Qt::KeyS to steno keyboard keys.
 *
 *   Mapping from US / UK Layout like https://en.wikipedia.org/wiki/British_and_American_keyboards to http://depo.com/about/aboutreporting/stenobasics.html
 */
-enum telegram {
+enum allowedStenoKeys {
     /** Initial on Upper Bank */
-    KEY01 = SDL_SCANCODE_Q, 
-    KEY02 = SDL_SCANCODE_W,
-    KEY03 = SDL_SCANCODE_E,
-    KEY04 = SDL_SCANCODE_R,
+    KEY01 = Qt::Key_Q,
+    KEY02 = Qt::Key_W,
+    KEY03 = Qt::Key_E,
+    KEY04 = Qt::Key_R,
     /** Asterisk Key Upper Bank */
-    KEY05 = SDL_SCANCODE_T|SDL_SCANCODE_Y,
+    KEY05 = Qt::Key_T|Qt::Key_Y,
     /** Initial on Lower Bank */
-    KEY06 = SDL_SCANCODE_A,
-    KEY07 = SDL_SCANCODE_S,
-    KEY08 = SDL_SCANCODE_D,
-    KEY09 = SDL_SCANCODE_F,
+    KEY06 = Qt::Key_A,
+    KEY07 = Qt::Key_S,
+    KEY08 = Qt::Key_D,
+    KEY09 = Qt::Key_F,
     /** Asterisk Key Lower Bank */
-    KEY10 = SDL_SCANCODE_G|SDL_SCANCODE_H,
+    KEY10 = Qt::Key_G|Qt::Key_H,
     /** Final on Upper Bank */
-    KEY11 = SDL_SCANCODE_U,
-    KEY12 = SDL_SCANCODE_I,
-    KEY13 = SDL_SCANCODE_O,
-    KEY14 = SDL_SCANCODE_P,
-    KEY15 = SDL_SCANCODE_LEFTBRACKET,
+    KEY11 = Qt::Key_U,
+    KEY12 = Qt::Key_I,
+    KEY13 = Qt::Key_O,
+    KEY14 = Qt::Key_P,
+    KEY15 = Qt::Key_BraceLeft,
     /** Final on Lower Bank */
-    KEY16 = SDL_SCANCODE_J,
-    KEY17 = SDL_SCANCODE_K,
-    KEY18 = SDL_SCANCODE_L,
-    KEY19 = SDL_SCANCODE_SEMICOLON,
-    KEY20 = SDL_SCANCODE_APOSTROPHE,
+    KEY16 = Qt::Key_J,
+    KEY17 = Qt::Key_K,
+    KEY18 = Qt::Key_L,
+    KEY19 = Qt::Key_Semicolon,
+    KEY20 = Qt::Key_Apostrophe,
     /** Vowel Keys */
-    KEY21 = SDL_SCANCODE_C,
-    KEY22 = SDL_SCANCODE_V,
-    KEY23 = SDL_SCANCODE_N,
-    KEY24 = SDL_SCANCODE_M
+    KEY21 = Qt::Key_C,
+    KEY22 = Qt::Key_V,
+    KEY23 = Qt::Key_N,
+    KEY24 = Qt::Key_M
 };
 
-std::map<telegram, char> create_map_de();
-std::map<telegram, char> create_map_en();
+std::map<allowedStenoKeys, char> create_map_de();
+std::map<allowedStenoKeys, char> create_map_en();
 
-const std::map<telegram, char> translate_german = create_map_de();
+//std::map<allowedStenoKeys, char> convertKey = create_map_de();
 
 #endif /* definitions_hpp */

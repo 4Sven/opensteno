@@ -9,7 +9,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
 cmake_policy(SET CMP0004 OLD)
 
 set(HEADERS
-source/gui.hpp
+#source/gui.hpp
 )
 
 set(SOURCES
@@ -19,8 +19,8 @@ source/gui.cpp
 #source/Steno.cpp
 source/definitions.hpp
 source/definitions.cpp
-source/StenoInput.hpp
-source/StenoInput.cpp
+source/sdleventthread.cpp
+source/sdleventthread.hpp
 )
 
 #add Xcode specific settings
@@ -62,7 +62,7 @@ add_definitions(${QT_DEFINITIONS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${QT_INCLUDE_DIR})
 list(APPEND OPENSTENO_LIBRARIES ${QT_LIBRARIES})
-#qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
+qt4_wrap_cpp(HEADERS_MOC ${HEADERS})
 qt4_wrap_ui(GUI_UI_H source/opensteno.ui)
 
 if (UnitTestPlusPlus_FOUND)

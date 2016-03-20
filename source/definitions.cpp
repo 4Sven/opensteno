@@ -18,8 +18,8 @@
  * Support for German Language
  * @return Mappingtable for Germany
  */
-std::map<telegram, char> create_map_de() {
-    std::map<telegram, char> m;
+std::map<allowedStenoKeys, char> create_map_de() {
+    std::map<allowedStenoKeys, char> m;
     m[KEY01] = 'S';
     m[KEY02] = 'B';
     m[KEY03] = 'G';
@@ -53,8 +53,8 @@ std::map<telegram, char> create_map_de() {
  * Support for English Language
  * @return Mappingtable for UK
  */
-std::map<telegram, char> create_map_en() {
-    std::map<telegram, char> m;
+std::map<allowedStenoKeys, char> create_map_en() {
+    std::map<allowedStenoKeys, char> m;
     m[KEY01] = 'S';
     m[KEY02] = 'T';
     m[KEY03] = 'P';
